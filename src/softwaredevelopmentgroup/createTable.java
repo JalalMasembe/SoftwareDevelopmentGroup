@@ -25,7 +25,10 @@ public class createTable {
                 + "            userEmail NVARCHAR (255), \n "
                 + "            userPassword VARCHAR (255) DEFAULT NULL, \n"
                 + "            userAddress VARCHAR (30), \n "
-                + "            userPostCode VARCHAR(8)\n" + ");";
+                + "            userPostCode VARCHAR(8), \n "
+                + "            userLanguageChoice VARCHAR(30), \n "
+                + "            userLanguageLevel  VARCHAR(30), \n "
+                + "            availableTutors VARCHAR(30)\n " + " );";
         
         try {
             stmt = con.createStatement();
