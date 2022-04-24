@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,14 +17,26 @@ import javax.swing.JOptionPane;
  * @author 44753
  */
 public class Register extends javax.swing.JFrame {
-
+    
+      int userID = 1 + (int) (Math.random() * 30);
+       
+      
+     
+        
+     
     /**
      * Creates new form Register
      */
     public Register() {
         initComponents();
+           
     }
-
+    
+  
+    
+   
+              
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -185,10 +198,7 @@ public class Register extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        
-       
-        int userID = 1 + (int) (Math.random() * 30);
+              
         
         String userEmail = jTextField1.getText();
         String userFullName = jTextField4.getText();
@@ -237,7 +247,7 @@ public class Register extends javax.swing.JFrame {
              Statement stmt = null;   
              
              
-            String sqlString = "INSERT INTO user (userID, userFullName, userEmail, userPassword, userAddress, userPostcode) VALUES (?,?,?,?,?,?)";
+            String sqlString = "INSERT INTO user (userID, userFullName, userEmail, userPassword, userAddress, userPostcode, userLanguageChoice, userLanguageLevel, availableTutors) VALUES (?,?,?,?,?,?,?,?,?)";
             
             PreparedStatement pst = con.prepareStatement(sqlString);
             pst.setInt(1,userID);
@@ -246,11 +256,16 @@ public class Register extends javax.swing.JFrame {
             pst.setString(4,jPasswordField1.getText());
             pst.setString(5,jTextField5.getText());
             pst.setString(6,jTextField6.getText());
+            pst.setString(7, "null");
+            pst.setString(8, "null");
+            pst.setString(9, "null");
+            
             
             pst.execute();
             
-            JOptionPane.showMessageDialog(null, "Thank you for registering.");
+            JOptionPane.showMessageDialog(null, "Thank you for registering. ");
             
+           
             }
             catch(Exception e)
               
@@ -273,9 +288,8 @@ public class Register extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         
-        
-        
-        
+       
+     
         
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
