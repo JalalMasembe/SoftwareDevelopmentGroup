@@ -7,6 +7,7 @@ package softwaredevelopmentgroup;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -18,14 +19,22 @@ import javax.swing.JOptionPane;
  */
 public class Register extends javax.swing.JFrame {
     
-      int userID = 1 + (int) (Math.random() * 30);
+
+    
+    
+    
+    
+    
+    
+    
+      int userID = 0;
        
       int teacherID = 1 + (int)(Math.random() * 30);
       
       int adminID = 1 + (int) (Math.random() * 30);
      
         
-     
+      
     /**
      * Creates new form Register
      */
@@ -261,8 +270,16 @@ public class Register extends javax.swing.JFrame {
              String selectedRole = jComboBox1.getSelectedItem().toString();
              
     if(selectedRole.equals("Student")) {
-
-
+             
+            Statement count_stmt = con.createStatement();
+            ResultSet count_res = count_stmt.executeQuery("SELECT COUNT(userID) AS count FROM user");
+            while(count_res.next())
+            {
+            int counted = count_res.getInt("count");
+            userID = counted + 1 ;
+            }
+            
+            
             String sqlString = "INSERT INTO user (userID, userFullName, userEmail, userPassword, userTelephone, userLanguageChoice, userLanguageLevel) VALUES (?,?,?,?,?,?,?)";
 
             PreparedStatement pst = con.prepareStatement(sqlString);
@@ -284,6 +301,14 @@ public class Register extends javax.swing.JFrame {
             }
             
             if(selectedRole.equals("Teacher")) {
+                  Statement count_stmt = con.createStatement();
+            ResultSet count_res = count_stmt.executeQuery("SELECT COUNT(teacherID) AS count FROM teacher");
+            while(count_res.next())
+            {
+            int counted = count_res.getInt("count");
+            teacherID = counted + 1 ;
+            }
+            
                 
              String sqlString =  "INSERT INTO teacher (teacherID, teacherFullName, teacherEmail, teacherPassword, teacherTelephone) VALUES (?,?,?,?,?)";
                 
@@ -302,7 +327,13 @@ public class Register extends javax.swing.JFrame {
             }
             
             if(selectedRole.equals("Admin")) {
-                
+                 Statement count_stmt = con.createStatement();
+            ResultSet count_res = count_stmt.executeQuery("SELECT COUNT(adminID) AS count FROM admin");
+            while(count_res.next())
+            {
+            int counted = count_res.getInt("count");
+            adminID = counted + 1 ;
+            }
               String sqlString =  "INSERT INTO admin (adminID, adminFullName, adminEmail, adminPassword, adminTelephone) VALUES (?,?,?,?,?)";
                 
               PreparedStatement pst = con.prepareStatement(sqlString);
@@ -311,7 +342,6 @@ public class Register extends javax.swing.JFrame {
               pst.setString(3,jTextField1.getText());
               pst.setString(4,jPasswordField1.getText());
               pst.setString(5,jTextField5.getText());
-            //  pst.setString(6,jTextField6.getText());    
                 
                 
               pst.execute();
