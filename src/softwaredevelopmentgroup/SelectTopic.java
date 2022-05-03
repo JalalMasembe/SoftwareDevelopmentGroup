@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package softwaredevgroupmywork;
+package softwaredevelopmentgroup;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -103,7 +103,7 @@ public class SelectTopic extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(266, 266, 266)
                         .addComponent(jButton1)))
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,7 +147,7 @@ public class SelectTopic extends javax.swing.JFrame {
          jComboBox2.removeAllItems();
          jComboBox2.setSelectedItem(null);
          jComboBox2.addItem("Disneyland");
-         jComboBox2.addItem("Helping with child's birthday party");         
+         jComboBox2.addItem("Helping with childs birthday party");         
         }
         else
         if(jComboBox1.getSelectedItem().equals("Asking and giving directions"))
@@ -185,9 +185,7 @@ public class SelectTopic extends javax.swing.JFrame {
              Connection con = connectDB.getConnection();
              Statement stmt = null;  
              
-             
-        
-            String sqlString = ("UPDATE user SET "
+             String sqlString = ("UPDATE user SET "
                              + "userTopic= '" + topicChosen + "'," 
                              + "userConversation= '" + conversationChosen + "',"
                              + "userRole = '" + roleChosen + "'");
@@ -196,9 +194,8 @@ public class SelectTopic extends javax.swing.JFrame {
             PreparedStatement pst = con.prepareStatement(sqlString);
             pst.execute();
               
-         
-            
-            JOptionPane.showMessageDialog(null, "User Data Updated...");       
+
+            JOptionPane.showMessageDialog(null, "Script is starting, data updated...");       
             
       }catch (Exception e)
       {
@@ -233,6 +230,13 @@ public class SelectTopic extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SelectTopic.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

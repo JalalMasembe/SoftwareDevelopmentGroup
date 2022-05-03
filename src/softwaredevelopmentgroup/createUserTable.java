@@ -13,6 +13,7 @@ import java.sql.Statement;
  *
  * @author 44753
  */
+        
 public class createUserTable {
     
    public static void main(String[] args) {
@@ -26,7 +27,10 @@ public class createUserTable {
                 + "            userPassword VARCHAR (255) DEFAULT NULL, \n"
                 + "            userTelephone VARCHAR (30), \n "
                 + "            userLanguageChoice VARCHAR(30), \n "
-                + "            userLanguageLevel  VARCHAR(30)\n  " + ");";
+                + "            userLanguageLevel  VARCHAR(30),\n  " 
+                + "            userTopic VARCHAR(30),\n "
+                + "            userConversation VARCHAR(30),\n "
+                + "            userRole VARCHAR(30)\n " + " );";
                
         
         try {
@@ -53,6 +57,3 @@ public class createUserTable {
         }
     }    
 }
-    
-    
-

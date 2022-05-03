@@ -5,6 +5,8 @@
  */
 package softwaredevelopmentgroup;
 
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -26,6 +28,10 @@ public class SelectLanguage extends javax.swing.JFrame {
         initComponents();
     }
     
+    public void close(){
+    WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+    Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,7 +53,7 @@ public class SelectLanguage extends javax.swing.JFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Language selection");
@@ -212,17 +218,19 @@ public class SelectLanguage extends javax.swing.JFrame {
               
          
             
-            JOptionPane.showMessageDialog(null, "User Data Updated... ");       
+            JOptionPane.showMessageDialog(null, "User Data Updated... ");
+            
             
       }catch (Exception e)
       {
           
-          JOptionPane.showMessageDialog(null, e); 
+          JOptionPane.showMessageDialog(null, e);
+          
                
       }
-            
-                
-        
+        close();
+        SelectTopic SelectT = new SelectTopic();
+        SelectT.setVisible(true);  
         
         
   
@@ -286,6 +294,13 @@ public class SelectLanguage extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SelectLanguage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
          
         /* Create and display the form */
