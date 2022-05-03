@@ -32,7 +32,6 @@ public class Register extends javax.swing.JFrame {
       int teacherID = 0;
       
       int adminID = 0;
-     
         
       
     /**
@@ -219,7 +218,8 @@ public class Register extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-              
+        boolean errors = false;
+
         
         String userEmail = jTextField1.getText();
         String userFullName = jTextField4.getText();
@@ -262,7 +262,6 @@ public class Register extends javax.swing.JFrame {
         if(userEmail.length()!= 0 && userFullName.length()!= 0 && userTelephone.length()!=0  && userPassword.length()!=0 && confirmPassword.length()!=0){ 
         
         
-            
             try{
              Connection con = connectDB.getConnection();
              Statement stmt = null;   
@@ -278,7 +277,18 @@ public class Register extends javax.swing.JFrame {
             int counted = count_res.getInt("count");
             userID = counted + 1 ;
             }
-            
+            Statement email_check_stmt = con.createStatement();
+            ResultSet email_check_res = email_check_stmt.executeQuery("SELECT COUNT(userEmail) AS check_email FROM user WHERE (userEmail = '"+ (userEmail.toString()) +"')");
+            while(email_check_res.next())
+            {
+            int exists = email_check_res.getInt("check_email");
+                if(exists != 0){
+                JOptionPane.showMessageDialog(null, "Email already in use!","Try a different one.",JOptionPane.ERROR_MESSAGE);
+                   
+                    
+                    errors = true;
+                };
+            }
             
             String sqlString = "INSERT INTO user (userID, userFullName, userEmail, userPassword, userTelephone, userLanguageChoice, userLanguageLevel) VALUES (?,?,?,?,?,?,?)";
 
@@ -292,14 +302,14 @@ public class Register extends javax.swing.JFrame {
             pst.setString(6, "null");
             pst.setString(7, "null");
 
-
+           if(errors == false){
 
             pst.execute();
 
             JOptionPane.showMessageDialog(null, "Thank you for registering. ");
 
             }
-            
+    }
             if(selectedRole.equals("Teacher")) {
                   Statement count_stmt = con.createStatement();
             ResultSet count_res = count_stmt.executeQuery("SELECT COUNT(teacherID) AS count FROM teacher");
@@ -308,7 +318,18 @@ public class Register extends javax.swing.JFrame {
             int counted = count_res.getInt("count");
             teacherID = counted + 1 ;
             }
-            
+            Statement email_check_stmt = con.createStatement();
+            ResultSet email_check_res = email_check_stmt.executeQuery("SELECT COUNT(teacherEmail) AS check_email FROM teacher WHERE (teacherEmail = '"+ (userEmail.toString()) +"')");
+            while(email_check_res.next())
+            {
+            int exists = email_check_res.getInt("check_email");
+                if(exists != 0){
+                JOptionPane.showMessageDialog(null, "Email already in use!","Try a different one.",JOptionPane.ERROR_MESSAGE);
+                   
+                    
+                    errors = true;
+                };
+            }
                 
              String sqlString =  "INSERT INTO teacher (teacherID, teacherFullName, teacherEmail, teacherPassword, teacherTelephone) VALUES (?,?,?,?,?)";
                 
@@ -319,11 +340,12 @@ public class Register extends javax.swing.JFrame {
               pst.setString(4,jPasswordField1.getText());
               pst.setString(5,jTextField5.getText());
                 
-                
+                 if(errors == false){
+
              pst.execute();
             
              JOptionPane.showMessageDialog(null, "Thank you for registering. ");
-                    
+                 }
             }
             
             if(selectedRole.equals("Admin")) {
@@ -334,6 +356,18 @@ public class Register extends javax.swing.JFrame {
             int counted = count_res.getInt("count");
             adminID = counted + 1 ;
             }
+            Statement email_check_stmt = con.createStatement();
+            ResultSet email_check_res = email_check_stmt.executeQuery("SELECT COUNT(adminEmail) AS check_email FROM admin WHERE (adminEmail = '"+ (userEmail.toString()) +"')");
+            while(email_check_res.next())
+            {
+            int exists = email_check_res.getInt("check_email");
+                if(exists != 0){
+                JOptionPane.showMessageDialog(null, "Email already in use!","Try a different one.",JOptionPane.ERROR_MESSAGE);
+                   
+                    
+                    errors = true;
+                };
+            }
               String sqlString =  "INSERT INTO admin (adminID, adminFullName, adminEmail, adminPassword, adminTelephone) VALUES (?,?,?,?,?)";
                 
               PreparedStatement pst = con.prepareStatement(sqlString);
@@ -343,11 +377,12 @@ public class Register extends javax.swing.JFrame {
               pst.setString(4,jPasswordField1.getText());
               pst.setString(5,jTextField5.getText());
                 
-                
+                 if(errors == false){
+
               pst.execute();
             
              JOptionPane.showMessageDialog(null, "Thank you for registering. ");   
-                            
+                 }       
             }
             
            
@@ -357,6 +392,7 @@ public class Register extends javax.swing.JFrame {
         {  
             JOptionPane.showMessageDialog(null, e);  
         } 
+            
             
             
             
