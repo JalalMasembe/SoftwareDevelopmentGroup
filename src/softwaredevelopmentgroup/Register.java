@@ -29,9 +29,9 @@ public class Register extends javax.swing.JFrame {
     
       int userID = 0;
        
-      int teacherID = 1 + (int)(Math.random() * 30);
+      int teacherID = 0;
       
-      int adminID = 1 + (int) (Math.random() * 30);
+      int adminID = 0;
      
         
       
