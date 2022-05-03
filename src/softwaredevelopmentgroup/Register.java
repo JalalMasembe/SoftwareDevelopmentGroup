@@ -78,6 +78,12 @@ public class Register extends javax.swing.JFrame {
             }
         });
 
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel4.setText("Email *");
 
@@ -209,7 +215,6 @@ public class Register extends javax.swing.JFrame {
         String userEmail = jTextField1.getText();
         String userFullName = jTextField4.getText();
         String userTelephone = jTextField5.getText();
-      //  String userAge = jTextField6.getText();
         String userPassword = jPasswordField1.getText();
         String confirmPassword = jPasswordField2.getText();
  
@@ -224,11 +229,14 @@ public class Register extends javax.swing.JFrame {
         if(userEmail.equals("")){
           JOptionPane.showMessageDialog(null, "Please enter Email.","incorrect details",JOptionPane.ERROR_MESSAGE);  
         }
+          if(userPassword.length() < 8){
+          JOptionPane.showMessageDialog(null, "Password too short!", "Try Again",JOptionPane.ERROR_MESSAGE);  
+        }
         if(userFullName.equals("")){
            JOptionPane.showMessageDialog(null, "Please enter Full Name.","incorrect details",JOptionPane.ERROR_MESSAGE);  
         }
         if(userTelephone.equals("")){
-           JOptionPane.showMessageDialog(null, "Please enter Address.","incorrect details",JOptionPane.ERROR_MESSAGE);  
+           JOptionPane.showMessageDialog(null, "Please enter Telephone number.","incorrect details",JOptionPane.ERROR_MESSAGE);  
         }
         if(userPassword.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter Password.","incorrect details",JOptionPane.ERROR_MESSAGE);  
@@ -252,32 +260,32 @@ public class Register extends javax.swing.JFrame {
              
              String selectedRole = jComboBox1.getSelectedItem().toString();
              
-            if(selectedRole.equals("Student")) {
-                       
-             
+    if(selectedRole.equals("Student")) {
+
+
             String sqlString = "INSERT INTO user (userID, userFullName, userEmail, userPassword, userTelephone, userLanguageChoice, userLanguageLevel) VALUES (?,?,?,?,?,?,?)";
-            
+
             PreparedStatement pst = con.prepareStatement(sqlString);
             pst.setInt(1,userID);
-            pst.setString(2,jTextField4.getText());    
+            pst.setString(2,jTextField4.getText());
             pst.setString(3,jTextField1.getText());
             pst.setString(4,jPasswordField1.getText());
             pst.setString(5,jTextField5.getText());
           //  pst.setString(6,jTextField6.getText());
             pst.setString(6, "null");
             pst.setString(7, "null");
-            
-            
-            
+
+
+
             pst.execute();
-            
+
             JOptionPane.showMessageDialog(null, "Thank you for registering. ");
-            
+
             }
             
             if(selectedRole.equals("Teacher")) {
                 
-             String sqlString =  "INSERT INTO teacher (teacherID, teacherFullName, teacherEmail, teacherPassword, teacherTelephone) VALUES (?,?,?,?,?,?)";
+             String sqlString =  "INSERT INTO teacher (teacherID, teacherFullName, teacherEmail, teacherPassword, teacherTelephone) VALUES (?,?,?,?,?)";
                 
               PreparedStatement pst = con.prepareStatement(sqlString);
               pst.setInt(1,teacherID);
@@ -285,7 +293,6 @@ public class Register extends javax.swing.JFrame {
               pst.setString(3,jTextField1.getText());
               pst.setString(4,jPasswordField1.getText());
               pst.setString(5,jTextField5.getText());
-         //     pst.setString(6,jTextField6.getText());   
                 
                 
              pst.execute();
@@ -334,6 +341,10 @@ public class Register extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
 
     /**
      * @param args the command line arguments
