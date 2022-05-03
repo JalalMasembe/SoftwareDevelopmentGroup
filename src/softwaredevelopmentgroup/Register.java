@@ -54,13 +54,11 @@ public class Register extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jPasswordField2 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
@@ -93,10 +91,7 @@ public class Register extends javax.swing.JFrame {
         jLabel7.setText("Full Name *");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel8.setText("Address *");
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabel9.setText("Postcode *");
+        jLabel8.setText("Telephone*");
 
         jButton1.setText("Register");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +114,7 @@ public class Register extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(80, 80, 80)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(146, 146, 146))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -132,23 +127,25 @@ public class Register extends javax.swing.JFrame {
                             .addComponent(jPasswordField2))
                         .addGap(85, 85, 85)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9))
-                        .addContainerGap(116, Short.MAX_VALUE))
+                            .addComponent(jLabel8))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(240, 240, 240)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(240, 240, 240)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -175,16 +172,12 @@ public class Register extends javax.swing.JFrame {
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(69, 69, 69)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel9))
+                .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(29, 29, 29)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
         );
@@ -203,7 +196,7 @@ public class Register extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
@@ -215,8 +208,8 @@ public class Register extends javax.swing.JFrame {
         
         String userEmail = jTextField1.getText();
         String userFullName = jTextField4.getText();
-        String userAddress = jTextField5.getText();
-        String userPostcode = jTextField6.getText();
+        String userTelephone = jTextField5.getText();
+      //  String userAge = jTextField6.getText();
         String userPassword = jPasswordField1.getText();
         String confirmPassword = jPasswordField2.getText();
  
@@ -224,7 +217,7 @@ public class Register extends javax.swing.JFrame {
         
         
         //checking if fields are all empty or entered incorrectly.
-        if(userEmail.equals("") && userFullName.equals("") && userAddress.equals("") && userPostcode.equals("") && userPassword.equals("") && confirmPassword.equals("")){
+        if(userEmail.equals("") && userFullName.equals("") && userTelephone.equals("") && userPassword.equals("") && confirmPassword.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter enter all details provided.","incorrect details",JOptionPane.ERROR_MESSAGE);      
         } 
         else{
@@ -234,11 +227,8 @@ public class Register extends javax.swing.JFrame {
         if(userFullName.equals("")){
            JOptionPane.showMessageDialog(null, "Please enter Full Name.","incorrect details",JOptionPane.ERROR_MESSAGE);  
         }
-        if(userAddress.equals("")){
+        if(userTelephone.equals("")){
            JOptionPane.showMessageDialog(null, "Please enter Address.","incorrect details",JOptionPane.ERROR_MESSAGE);  
-        }
-        if(userPostcode.equals("")){
-           JOptionPane.showMessageDialog(null, "Please enter Postcode.","incorrect details",JOptionPane.ERROR_MESSAGE); 
         }
         if(userPassword.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter Password.","incorrect details",JOptionPane.ERROR_MESSAGE);  
@@ -252,7 +242,7 @@ public class Register extends javax.swing.JFrame {
         }
         
      }
-        if(userEmail.length()!= 0 && userFullName.length()!= 0 && userAddress.length()!=0 && userPostcode.length()!=0 && userPassword.length()!=0 && confirmPassword.length()!=0){ 
+        if(userEmail.length()!= 0 && userFullName.length()!= 0 && userTelephone.length()!=0  && userPassword.length()!=0 && confirmPassword.length()!=0){ 
         
         
             
@@ -265,7 +255,7 @@ public class Register extends javax.swing.JFrame {
             if(selectedRole.equals("Student")) {
                        
              
-            String sqlString = "INSERT INTO user (userID, userFullName, userEmail, userPassword, userAddress, userPostcode, userLanguageChoice, userLanguageLevel, availableTutors) VALUES (?,?,?,?,?,?,?,?,?)";
+            String sqlString = "INSERT INTO user (userID, userFullName, userEmail, userPassword, userTelephone, userLanguageChoice, userLanguageLevel) VALUES (?,?,?,?,?,?,?)";
             
             PreparedStatement pst = con.prepareStatement(sqlString);
             pst.setInt(1,userID);
@@ -273,10 +263,10 @@ public class Register extends javax.swing.JFrame {
             pst.setString(3,jTextField1.getText());
             pst.setString(4,jPasswordField1.getText());
             pst.setString(5,jTextField5.getText());
-            pst.setString(6,jTextField6.getText());
+          //  pst.setString(6,jTextField6.getText());
+            pst.setString(6, "null");
             pst.setString(7, "null");
-            pst.setString(8, "null");
-            pst.setString(9, "null");
+            
             
             
             pst.execute();
@@ -287,7 +277,7 @@ public class Register extends javax.swing.JFrame {
             
             if(selectedRole.equals("Teacher")) {
                 
-             String sqlString =  "INSERT INTO teacher (teacherID, teacherFullName, teacherEmail, teacherPassword, teacherAddress, teacherPostcode) VALUES (?,?,?,?,?,?)";
+             String sqlString =  "INSERT INTO teacher (teacherID, teacherFullName, teacherEmail, teacherPassword, teacherTelephone) VALUES (?,?,?,?,?,?)";
                 
               PreparedStatement pst = con.prepareStatement(sqlString);
               pst.setInt(1,teacherID);
@@ -295,7 +285,7 @@ public class Register extends javax.swing.JFrame {
               pst.setString(3,jTextField1.getText());
               pst.setString(4,jPasswordField1.getText());
               pst.setString(5,jTextField5.getText());
-              pst.setString(6,jTextField6.getText());   
+         //     pst.setString(6,jTextField6.getText());   
                 
                 
              pst.execute();
@@ -306,7 +296,7 @@ public class Register extends javax.swing.JFrame {
             
             if(selectedRole.equals("Admin")) {
                 
-              String sqlString =  "INSERT INTO admin (adminID, adminFullName, adminEmail, adminPassword, adminAddress, adminPostcode) VALUES (?,?,?,?,?,?)";
+              String sqlString =  "INSERT INTO admin (adminID, adminFullName, adminEmail, adminPassword, adminTelephone) VALUES (?,?,?,?,?)";
                 
               PreparedStatement pst = con.prepareStatement(sqlString);
               pst.setInt(1,adminID);
@@ -314,7 +304,7 @@ public class Register extends javax.swing.JFrame {
               pst.setString(3,jTextField1.getText());
               pst.setString(4,jPasswordField1.getText());
               pst.setString(5,jTextField5.getText());
-              pst.setString(6,jTextField6.getText());    
+            //  pst.setString(6,jTextField6.getText());    
                 
                 
               pst.execute();
@@ -395,13 +385,11 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }
