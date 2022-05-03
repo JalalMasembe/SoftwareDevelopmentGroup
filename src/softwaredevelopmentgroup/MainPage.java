@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package softwaredevgroupmywork;
+package softwaredevelopmentgroup;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
@@ -42,7 +42,6 @@ public class MainPage extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(643, 743));
 
         jButton1.setText("Student Progress");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +132,9 @@ public class MainPage extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        close();
+        LoginPage lPage = new LoginPage();
+        lPage.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -144,9 +146,9 @@ public class MainPage extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        close();
+        /*close();
         SelectLanguage selectL = new SelectLanguage();
-        selectL.setVisible(true);
+        selectL.setVisible(true);*/
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

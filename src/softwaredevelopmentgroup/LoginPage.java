@@ -2,14 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package softwaredevgroupmywork;
+package softwaredevelopmentgroup;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,8 +22,14 @@ public class LoginPage extends javax.swing.JFrame {
     /**
      * Creates new form LoginPage
      */
+    
+    Connection con = null;
+    PreparedStatement pst = null;
+      ResultSet rs = null;
+    
     public LoginPage() {
         initComponents();
+        con = connectDB.getConnection();
     }
     
     public void close(){
@@ -164,8 +172,78 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        String username = jTextField1.getText();
-        String password = jTextField2.getText();
+        //String username = jTextField1.getText();
+        //String password = jTextField2.getText();
+        
+        if(jComboBox1.getSelectedItem().equals("Student")){
+        
+        String sql = "SELECT * from user WHERE userEmail LIKE ? AND userPassword  LIKE ?; ";
+        try{
+             pst = con.prepareStatement(sql);
+             pst.setString(1, jTextField1.getText());
+             pst.setString(2, jTextField2.getText());
+             rs = pst.executeQuery();
+             
+             if(rs.next()){
+                 JOptionPane.showMessageDialog(null, "Login Successful!");
+        close();
+        MainPage mPage = new MainPage();
+        mPage.setVisible(true);
+             }
+             else{
+                 JOptionPane.showMessageDialog(null, "Incorrect Login details!");
+             }
+            
+        }
+        catch(Exception e){
+        }
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Teacher")){
+        
+        String sql = "SELECT * from teacher WHERE teacherEmail LIKE ? AND teacherPassword  LIKE ?; ";
+        try{
+             pst = con.prepareStatement(sql);
+             pst.setString(1, jTextField1.getText());
+             pst.setString(2, jTextField2.getText());
+             rs = pst.executeQuery();
+             
+             if(rs.next()){
+                 JOptionPane.showMessageDialog(null, "Login Successful!");
+        close();
+        MainPage mPage = new MainPage();
+        mPage.setVisible(true);
+             }
+             else{
+                 JOptionPane.showMessageDialog(null, "Incorrect Login details!");
+             }
+            
+        }
+        catch(Exception e){
+        }
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Admin")){
+        
+        String sql = "SELECT * from admin WHERE adminEmail LIKE ? AND adminPassword  LIKE ?; ";
+        try{
+             pst = con.prepareStatement(sql);
+             pst.setString(1, jTextField1.getText());
+             pst.setString(2, jTextField2.getText());
+             rs = pst.executeQuery();
+             
+             if(rs.next()){
+                 JOptionPane.showMessageDialog(null, "Login Successful!");
+        close();
+             }
+             else{
+                 JOptionPane.showMessageDialog(null, "Incorrect Login details!");
+             }
+            
+        }
+        catch(Exception e){
+        }
+        }
         /*
              try{
              Connection con = connectDB.getConnection();
@@ -194,7 +272,7 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         close();
         Register registerP = new Register();
-        registerP.setVisible(true);
+        registerP.setVisible(true); 
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
