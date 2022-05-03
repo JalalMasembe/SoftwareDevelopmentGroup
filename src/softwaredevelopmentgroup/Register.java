@@ -233,29 +233,38 @@ public class Register extends javax.swing.JFrame {
         //checking if fields are all empty or entered incorrectly.
         if(userEmail.equals("") && userFullName.equals("") && userTelephone.equals("") && userPassword.equals("") && confirmPassword.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter enter all details provided.","incorrect details",JOptionPane.ERROR_MESSAGE);      
+                errors = true;
         } 
         else{
         if(userEmail.equals("")){
           JOptionPane.showMessageDialog(null, "Please enter Email.","incorrect details",JOptionPane.ERROR_MESSAGE);  
+                errors = true;
+
         }
           if(userPassword.length() < 8){
           JOptionPane.showMessageDialog(null, "Password too short!", "Try Again",JOptionPane.ERROR_MESSAGE);  
-        }
+                errors = true;
+          }
         if(userFullName.equals("")){
            JOptionPane.showMessageDialog(null, "Please enter Full Name.","incorrect details",JOptionPane.ERROR_MESSAGE);  
+               errors = true;
         }
         if(userTelephone.equals("")){
            JOptionPane.showMessageDialog(null, "Please enter Telephone number.","incorrect details",JOptionPane.ERROR_MESSAGE);  
+               errors = true;
         }
         if(userPassword.equals("")){
             JOptionPane.showMessageDialog(null, "Please enter Password.","incorrect details",JOptionPane.ERROR_MESSAGE);  
+               errors = true;
         }
         if(confirmPassword.equals("")){
              JOptionPane.showMessageDialog(null, "Please confirm Password.","incorrect details",JOptionPane.ERROR_MESSAGE); 
+              errors = true;
         }
         
         if(!userPassword.equals(confirmPassword)){
             JOptionPane.showMessageDialog(null, "Passwords do not match!","incorrect details",JOptionPane.ERROR_MESSAGE);
+               errors = true;
         }
         
      }
