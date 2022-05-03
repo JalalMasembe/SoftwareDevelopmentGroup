@@ -23,8 +23,8 @@ public class createTeacherTable {
                 + "            teacherFullName  VARCHAR (30),\n"
                 + "            teacherEmail NVARCHAR (255), \n "
                 + "            teacherPassword VARCHAR (255) DEFAULT NULL, \n"
-                + "            teacherAddress VARCHAR (30), \n "
-                + "            teacherPostCode VARCHAR(8)\n" + "); ";          
+                + "            teacherTelephone VARCHAR (30) \n " + ");";
+          
         try {
             stmt = con.createStatement();
             stmt.executeUpdate(createString);
