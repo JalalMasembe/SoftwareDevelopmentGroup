@@ -24,8 +24,8 @@ public class createAdminTable {
                 + "            adminFullName  VARCHAR (30),\n"
                 + "            adminEmail NVARCHAR (255), \n "
                 + "            adminPassword VARCHAR (255) DEFAULT NULL, \n"
-                + "            adminAddress VARCHAR (30), \n "
-                + "            adminPostCode VARCHAR(8)\n" + ") ;";          
+                + "            adminTelephone VARCHAR (30)\n " + ") ;";
+                       
         try {
             stmt = con.createStatement();
             stmt.executeUpdate(createString);
