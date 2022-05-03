@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-package softwaredevgroupmywork;
+package softwaredevelopmentgroup;
 
+import softwaredevelopmentgroup.MainPage;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 
