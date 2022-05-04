@@ -5,11 +5,16 @@
  */
 package softwaredevelopmentgroup;
 
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import java.io.FileInputStream;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,16 +27,43 @@ public class convPage extends javax.swing.JFrame {
      */
          
         Connection con = null;
-
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String language = "Spanish";
+        String level = "A1";
+        String context = "Ordering food and drink";
+        String subcontext = "Takeaway";
+        String dialogue_txt = "";
+        String side = "A";
+        
+        
+        int order_id = 1;
+        String special_words = "";
+        int MaxOrder = 0;
+             
     public convPage() {
         initComponents();
         con = connectDB.getConnection();
         Statement stmt = null;
         jButton1.setVisible(false);
-        jTextPane1.setVisible(false);
-        jTextPane2.setVisible(false);
+        jLabel1.setVisible(false);
+        jLabel2.setVisible(false);
         createConvTable convCreate = new createConvTable();
                   convCreate.create();
+          if(side=="A"){
+             order_id = 1;
+                        } 
+          else if(side=="B"){
+             order_id = 2;
+                        } 
+                  
+                  //    variable initiasilation for Query
+            
+                  
+                  
+                  
+                  
+                  
     }
     
 
@@ -46,12 +78,10 @@ public class convPage extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,16 +93,6 @@ public class convPage extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        jTextPane1.setBorder(null);
-        jTextPane1.setVisible(false);
-        jTextPane1.setName("dialog_box"); // NOI18N
-        jScrollPane1.setViewportView(jTextPane1);
-
-        jTextPane2.setBorder(null);
-        jTextPane2.setVisible(false);
-        jTextPane2.setName("spec_word_box"); // NOI18N
-        jScrollPane2.setViewportView(jTextPane2);
 
         jButton2.setText("Load Database");
         jButton2.setActionCommand("Load Data");
@@ -91,37 +111,46 @@ public class convPage extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setAutoscrolls(true);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109)
+                .addGap(464, 464, 464)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(239, 239, 239))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 549, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(239, 239, 239))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(41, 41, 41)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton2)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -144,16 +173,22 @@ public class convPage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-      
+        //BUTTON NEXT
+        order_id = order_id +2; // iterate the next conversation part
+                  convFinder();
+                  sw_checker();
+        if (order_id>MaxOrder){
+            JOptionPane.showMessageDialog(null, "Conversation over!");
+            
+            // CLOSE AND SEND TO MAIN PAGE
+
                 
+        }           
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-          
-        
-        
-
+          // BUTTON LOAD DATABASE
                   readCSV read_csv = new readCSV();
                   read_csv.csvReader();
                   jButton3.setVisible(true);
@@ -169,13 +204,71 @@ public class convPage extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        
+        //BUTTON START
+          maxOrder_id();
+          convFinder();
+          sw_checker();
           jButton3.setVisible(false);
           jButton1.setVisible(true);
-          jTextPane1.setVisible(true);
-          jTextPane2.setVisible(true);
+          jLabel1.setVisible(true);
+          jLabel2.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    
+    public void maxOrder_id(){
+    
+    String sql = "SELECT COUNT (order_id) AS maxOrder FROM ConvTable WHERE (language LIKE '"+language+"' AND level LIKE '"+level+"' AND context LIKE '"+context+"' AND subcontext LIKE '"+subcontext+"')";
+    
+    try{
+    pst = con.prepareStatement(sql);
+    rs = pst.executeQuery();
+    MaxOrder = rs.getInt("maxOrder");
+    
+    }
+    catch(Exception e){
+    }
+    
+    }
+     public void sw_checker(){
+        
+    String sql = "SELECT (special_words) AS sw FROM ConvTable WHERE (language LIKE '"+language+"' AND level LIKE '"+level+"' AND context LIKE '"+context+"' AND subcontext LIKE '"+subcontext+"' AND side LIKE '"+side+"'AND order_id LIKE '"+order_id+"')";
+     try{
+    pst = con.prepareStatement(sql);
+    rs = pst.executeQuery();
+    special_words = rs.getString("sw");
+    
+        if(special_words.length() > 2)
+        {jLabel2.setText("<html>"+special_words+"</html>");      }
+        else{jLabel2.setText("");}
+    }
+    catch(Exception e){
+    }
+
+   
+    }
+    public void convFinder(){
+        
+    String sql = "SELECT (dialogue_txt) AS dialogue FROM ConvTable WHERE (language LIKE '"+language+"' AND level LIKE '"+level+"' AND context LIKE '"+context+"' AND subcontext LIKE '"+subcontext+"' AND side LIKE '"+side+"'AND order_id LIKE '"+order_id+"')";
+     try{
+    pst = con.prepareStatement(sql);
+    rs = pst.executeQuery();
+    dialogue_txt = rs.getString("dialogue");
+    
+        
+        jLabel1.setText("<html>"+dialogue_txt+"</html>");
+    }
+    catch(Exception e){
+    }
+
+   
+    }
+     public void close(){
+    WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+    Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -232,10 +325,8 @@ public class convPage extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
     // End of variables declaration//GEN-END:variables
 }
