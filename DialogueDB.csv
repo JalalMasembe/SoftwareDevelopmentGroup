@@ -1,3 +1,4 @@
+language,level,context,subcontext,dialogue_txt,side,order_id,special_words
 Spanish,A1,Ordering food and drink,Takeaway,Hi there. Do you have a table for 2?,A,1,
 Spanish,A1,Ordering food and drink,Takeaway,Good evening. Do you have a reservation with us?,B,2,reservación
 Spanish,A1,Ordering food and drink,Takeaway,I'm sorry I don't. ,A,3,
