@@ -16,6 +16,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author marco
@@ -29,22 +30,30 @@ public class convPage extends javax.swing.JFrame {
         Connection con = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
+        
+                                //EXAMPLE SET
         String language = "Spanish";
         String level = "A1";
         String context = "Ordering food and drink";
         String subcontext = "Takeaway";
         String dialogue_txt = "";
-        String side = "A";
-        
-        
-        int order_id = 1;
+        String side = "A"; // try interchange A and B
+        int order_id = 0;
         String special_words = "";
         int MaxOrder = 0;
         
-    public convPage() {
+       
         
+        
+        
+        
+             
+        
+    public convPage() {
+
         initComponents();
         
+
         con = connectDB.getConnection();
         Statement stmt = null;
         
@@ -54,8 +63,13 @@ public class convPage extends javax.swing.JFrame {
         
          createConvTable convCreate = new createConvTable();
                   convCreate.create();
+                  
+                  
+                  
+                // importer();    
+               // THIS SHOULD BE ACTIVATED TO IMPORT DATA FROM PREVIOUS FUNCTIONS
         
-        
+        // choice of dialogue based on choice of side.
           if(side=="A"){
              order_id = 1;
                         } 
@@ -65,11 +79,8 @@ public class convPage extends javax.swing.JFrame {
                
                   //    variable initiasilation for Query
             
-                  
-                  
-                  
-                  
-                  
+                          
+    
     }
     
 
@@ -180,11 +191,7 @@ public class convPage extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //BUTTON NEXT
-        
-        
-        
-        
-        
+       
         order_id = order_id +2; // iterate the next conversation part
                   convFinder();
                   sw_checker();
@@ -237,7 +244,32 @@ public class convPage extends javax.swing.JFrame {
           
     }//GEN-LAST:event_jButton3ActionPerformed
    
+    public void importer(){         //THIS METHOD DOESNT GET CALLED BECAUSE THE DATA TO IMPORT FROM THE OTHER CLASSES IS MISSING. 
+            
+            //EVEN IF THE METHOD GETS CALLED  BOTH BY THE FOLLOWING METHOD AND WITH GETTERS/SETTERS.
+            //UNLUCKILY IMPORTS THE VARIABLE AT THE INITIALISATION STAGE (""), MAKING IT BLANK
+            //IF A WAY TO RETRIEVE THE VARIABLE AFTER THE VALUE HAS BEEN ASSIGNED TO IT, IT SHOULD BE IMPLEMENTED HERE.
+            
+            
+            
+            //LANGUAGE AND LEVEL        
+            
+            SelectLanguage selLang = new SelectLanguage();
+            language = selLang.getLang();
+            level = selLang.languageLevel;
+            JOptionPane.showMessageDialog(null, language);
 
+  
+            
+            //context, subcontext and side
+            SelectTopic selTopic = new SelectTopic();
+            context = selTopic.topicChosen;
+            subcontext = selTopic.conversationChosen;
+            side = selTopic.roleChosen;    
+        }
+    
+    
+    
     public void maxOrder_id(){
     
     String sql = "SELECT COUNT (order_id) AS maxOrder FROM ConvTable WHERE (language LIKE '"+language+"' AND level LIKE '"+level+"' AND context LIKE '"+context+"' AND subcontext LIKE '"+subcontext+"')";
