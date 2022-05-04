@@ -15,7 +15,10 @@ import java.sql.Statement;
  */
 public class createTeacherTable {
     public static void main(String[] args) {
-   Connection con = connectDB.getConnection();
+   
+    }    
+    
+    static void create(){Connection con = connectDB.getConnection();
         Statement stmt = null;
         String createString;
         createString = "CREATE TABLE if not exists teacher (\n"
@@ -46,8 +49,7 @@ public class createTeacherTable {
                     System.err.println("SQLException: " + e.getMessage());
                 }
             }
-        }
-    }    
+        }}
 }
     
 

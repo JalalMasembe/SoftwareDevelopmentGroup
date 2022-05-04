@@ -17,6 +17,10 @@ import java.sql.Statement;
 public class createUserTable {
     
    public static void main(String[] args) {
+       
+       
+    }  
+   static void create(){
    Connection con = connectDB.getConnection();
         Statement stmt = null;
         String createString;
@@ -55,5 +59,5 @@ public class createUserTable {
                 }
             }
         }
-    }    
+   }
 }

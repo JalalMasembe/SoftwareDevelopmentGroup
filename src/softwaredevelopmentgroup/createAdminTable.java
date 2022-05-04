@@ -9,14 +9,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author 44753
- */
+
 public class createAdminTable {
     
      public static void main(String[] args) {
-   Connection con = connectDB.getConnection();
+   
+        }
+     static void create(){Connection con = connectDB.getConnection();
         Statement stmt = null;
         String createString;
         createString = "CREATE TABLE if not exists admin (\n"
@@ -46,8 +45,7 @@ public class createAdminTable {
                 } catch (SQLException e) {
                     System.err.println("SQLException: " + e.getMessage());
                 }
-            }
-        }
+            }} 
     }    
     
     
