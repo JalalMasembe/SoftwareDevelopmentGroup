@@ -40,23 +40,29 @@ public class convPage extends javax.swing.JFrame {
         int order_id = 1;
         String special_words = "";
         int MaxOrder = 0;
-             
+        
     public convPage() {
+        
         initComponents();
+        
         con = connectDB.getConnection();
         Statement stmt = null;
+        
         jButton1.setVisible(false);
         jLabel1.setVisible(false);
         jLabel2.setVisible(false);
-        createConvTable convCreate = new createConvTable();
+        
+         createConvTable convCreate = new createConvTable();
                   convCreate.create();
+        
+        
           if(side=="A"){
              order_id = 1;
                         } 
           else if(side=="B"){
              order_id = 2;
                         } 
-                  
+               
                   //    variable initiasilation for Query
             
                   
@@ -83,7 +89,7 @@ public class convPage extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jButton1.setText("Next");
@@ -174,6 +180,11 @@ public class convPage extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //BUTTON NEXT
+        
+        
+        
+        
+        
         order_id = order_id +2; // iterate the next conversation part
                   convFinder();
                   sw_checker();
@@ -181,7 +192,9 @@ public class convPage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Conversation over!");
             
             // CLOSE AND SEND TO MAIN PAGE
-
+            close();
+                    MainPage mPage = new MainPage();
+                    mPage.setVisible(true);
                 
         }           
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -189,10 +202,11 @@ public class convPage extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
           // BUTTON LOAD DATABASE
-                  readCSV read_csv = new readCSV();
+          
+         readCSV read_csv = new readCSV();
                   read_csv.csvReader();
-                  jButton3.setVisible(true);
-                  jButton2.setVisible(false);
+       
+        jButton2.setVisible(false);
 
 
 
@@ -205,6 +219,10 @@ public class convPage extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         //BUTTON START
+     
+        
+        
+        
           maxOrder_id();
           convFinder();
           sw_checker();
@@ -212,9 +230,14 @@ public class convPage extends javax.swing.JFrame {
           jButton1.setVisible(true);
           jLabel1.setVisible(true);
           jLabel2.setVisible(true);
+          
+          
+          
+          
+          
     }//GEN-LAST:event_jButton3ActionPerformed
+   
 
-    
     public void maxOrder_id(){
     
     String sql = "SELECT COUNT (order_id) AS maxOrder FROM ConvTable WHERE (language LIKE '"+language+"' AND level LIKE '"+level+"' AND context LIKE '"+context+"' AND subcontext LIKE '"+subcontext+"')";
