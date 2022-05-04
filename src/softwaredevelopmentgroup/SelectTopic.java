@@ -70,16 +70,16 @@ public class SelectTopic extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Role:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Transport in London", "Making invitations", "Asking and giving directions", "University life", "Healthcare" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ordering food and drink", "Exchanging personal information", "Making appointments", "Going shopping and asking for prices", "Introductions", "Basic employment issues", "Making invitations", "Socialising in the country", "Asking and giving directions", "University life", "Cross-cultural experiences", "Health matters", "Making travel arrangements", "Weather", "Housing conditions" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Train", "Bus", "Bikes", "Taxi" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Takeaway", "Coffee Order", "Reservation", "Cocktails by card payment", "Water for table" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Person A", "Person B" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A", "B" }));
 
         jButton1.setText("Start Script");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +129,7 @@ public class SelectTopic extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton2)))
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,14 +160,58 @@ public class SelectTopic extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        if(jComboBox1.getSelectedItem().equals("Transport in London"))
+       //level 1
+        
+        if(jComboBox1.getSelectedItem().equals("Ordering food and drink"))
         {
          jComboBox2.removeAllItems();
          jComboBox2.setSelectedItem(null);
-         jComboBox2.addItem("Train");
-         jComboBox2.addItem("Bus");
-         jComboBox2.addItem("Bikes");   
-         jComboBox2.addItem("Taxi");      
+         jComboBox2.addItem("Takeaway");
+         jComboBox2.addItem("Coffee Order");
+         jComboBox2.addItem("Reservation");   
+         jComboBox2.addItem("Cocktails by card payment");
+         jComboBox2.addItem("Water for table");      
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Exchanging personal information"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Social media");
+         jComboBox2.addItem("Instagram");
+         jComboBox2.addItem("Neighbours parcel");
+         jComboBox2.addItem("Description of town");          
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Making appointments"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Booking");
+         jComboBox2.addItem("Spelling your name");
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Going shopping and asking for prices"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Payment");
+         jComboBox2.addItem("Refund"); 
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Introductions"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Repeat name"); 
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Basic employment issues"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Cover");
+         jComboBox2.addItem("Interview"); 
         }
         else
         if(jComboBox1.getSelectedItem().equals("Making invitations"))
@@ -175,38 +219,241 @@ public class SelectTopic extends javax.swing.JFrame {
          jComboBox2.removeAllItems();
          jComboBox2.setSelectedItem(null);
          jComboBox2.addItem("Disneyland");
-         jComboBox2.addItem("Helping with childs birthday party");         
+         jComboBox2.addItem("Help with childs birthday party"); 
+        }      
+        else
+        if(jComboBox1.getSelectedItem().equals("Socialising in the country"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Interview arrangements");       
         }
         else
         if(jComboBox1.getSelectedItem().equals("Asking and giving directions"))
         {
          jComboBox2.removeAllItems();
          jComboBox2.setSelectedItem(null);
-         jComboBox2.addItem("Delivery driver");        
+         jComboBox2.addItem("Delivery driver");       
         }
         else
         if(jComboBox1.getSelectedItem().equals("University life"))
         {
          jComboBox2.removeAllItems();
          jComboBox2.setSelectedItem(null);
-         jComboBox2.addItem("Study in cafe");        
+         jComboBox2.addItem("Study in cafe");       
         }
         else
-        if(jComboBox1.getSelectedItem().equals("Healthcare"))
+        if(jComboBox1.getSelectedItem().equals("Cross-cultural experiences"))
         {
          jComboBox2.removeAllItems();
          jComboBox2.setSelectedItem(null);
-         jComboBox2.addItem("National health service");       
+         jComboBox2.addItem("International food");       
         }
         
+        //level 2
+        else
+        if(jComboBox1.getSelectedItem().equals("Introductions**"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("1st day in job");   
+         jComboBox2.addItem("Job offer"); 
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Making appointments**"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Dentist");
+         jComboBox2.addItem("Doctor");
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Asking and giving directions**"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Hospital visit"); 
+         jComboBox2.addItem("Delivery driver"); 
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Making invitations**"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Lunch"); 
+         jComboBox2.addItem("Charity"); 
+         jComboBox2.addItem("Children at wedding"); 
+         jComboBox2.addItem("Wedding RSVP"); 
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Ordering food and drinks**"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Delayed drinks order"); 
+         jComboBox2.addItem("QR code"); 
+         jComboBox2.addItem("Cocktails (1)");
+         jComboBox2.addItem("Cocktails (2)"); 
+         jComboBox2.addItem("Vegan pizza"); 
+         jComboBox2.addItem("Reservation");
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Going shopping and asking for prices**"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Payment");       
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Health matters"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Sick relative"); 
+         jComboBox2.addItem("Visiting patient"); 
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Socialising in the country**"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Family size"); 
+         jComboBox2.addItem("Hobbies"); 
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Making travel arrangements"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Expired ticket"); 
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Exchanging personal information**"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Age restricted");
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Cross-cultural experiences**"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Omelette");       
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Weather"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Clothing for weather");
+        }
+        
+        //level 3
+        else
+        if(jComboBox1.getSelectedItem().equals("University life***"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Study plans");       
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Making travel arrangements**"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("E-ticket");
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Going shopping and asking for prices***"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Purchase of computer");  
+         jComboBox2.addItem("Cancel hair appointment");  
+         jComboBox2.addItem("Payment");  
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Socialising in the country***"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Haircut");
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Weather**"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Rain in station");       
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Ordering food and drink***"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Ordering cocktails by barcode");
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Making invitations***"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Offering help for Pink Unicorn party");       
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Basic employment issues***"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Job offer");
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Housing conditions"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Delivery of packages");       
+        }
+        
+        //level 4
+        
+        else
+        if(jComboBox1.getSelectedItem().equals("Going shopping and asking for prices****"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Phone purchase");
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Basic employment issues****"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Meet for drinks");       
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Making travel arrangements***"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("Disneyland");
+        }
+        else
+        if(jComboBox1.getSelectedItem().equals("Socialising in the country****"))
+        {
+         jComboBox2.removeAllItems();
+         jComboBox2.setSelectedItem(null);
+         jComboBox2.addItem("No show date");       
+        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-     topicChosen = jComboBox1.getSelectedItem().toString();
-     conversationChosen = jComboBox2.getSelectedItem().toString();
-     roleChosen = jComboBox3.getSelectedItem().toString();
+      topicChosen = jComboBox1.getSelectedItem().toString();
+      conversationChosen = jComboBox2.getSelectedItem().toString();
+      roleChosen = jComboBox3.getSelectedItem().toString();
 
       
       try{

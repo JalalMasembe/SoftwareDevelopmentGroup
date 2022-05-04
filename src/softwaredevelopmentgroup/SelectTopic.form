@@ -65,7 +65,7 @@
                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="233" max="32767" attributes="0"/>
+              <EmptySpace pref="194" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -134,12 +134,22 @@
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="5">
-            <StringItem index="0" value="Transport in London"/>
-            <StringItem index="1" value="Making invitations"/>
-            <StringItem index="2" value="Asking and giving directions"/>
-            <StringItem index="3" value="University life"/>
-            <StringItem index="4" value="Healthcare"/>
+          <StringArray count="15">
+            <StringItem index="0" value="Ordering food and drink"/>
+            <StringItem index="1" value="Exchanging personal information"/>
+            <StringItem index="2" value="Making appointments"/>
+            <StringItem index="3" value="Going shopping and asking for prices"/>
+            <StringItem index="4" value="Introductions"/>
+            <StringItem index="5" value="Basic employment issues"/>
+            <StringItem index="6" value="Making invitations"/>
+            <StringItem index="7" value="Socialising in the country"/>
+            <StringItem index="8" value="Asking and giving directions"/>
+            <StringItem index="9" value="University life"/>
+            <StringItem index="10" value="Cross-cultural experiences"/>
+            <StringItem index="11" value="Health matters"/>
+            <StringItem index="12" value="Making travel arrangements"/>
+            <StringItem index="13" value="Weather"/>
+            <StringItem index="14" value="Housing conditions"/>
           </StringArray>
         </Property>
       </Properties>
@@ -153,11 +163,12 @@
     <Component class="javax.swing.JComboBox" name="jComboBox2">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Train"/>
-            <StringItem index="1" value="Bus"/>
-            <StringItem index="2" value="Bikes"/>
-            <StringItem index="3" value="Taxi"/>
+          <StringArray count="5">
+            <StringItem index="0" value="Takeaway"/>
+            <StringItem index="1" value="Coffee Order"/>
+            <StringItem index="2" value="Reservation"/>
+            <StringItem index="3" value="Cocktails by card payment"/>
+            <StringItem index="4" value="Water for table"/>
           </StringArray>
         </Property>
       </Properties>
@@ -169,8 +180,8 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="2">
-            <StringItem index="0" value="Person A"/>
-            <StringItem index="1" value="Person B"/>
+            <StringItem index="0" value="A"/>
+            <StringItem index="1" value="B"/>
           </StringArray>
         </Property>
       </Properties>
