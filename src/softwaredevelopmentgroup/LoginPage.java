@@ -235,6 +235,8 @@ public class LoginPage extends javax.swing.JFrame {
              if(rs.next()){
                  JOptionPane.showMessageDialog(null, "Login Successful!");
         close();
+        AdminPanel adminP = new AdminPanel ();
+        adminP.setVisible(true);
              }
              else{
                  JOptionPane.showMessageDialog(null, "Incorrect Login details!");
