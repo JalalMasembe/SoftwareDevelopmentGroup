@@ -40,6 +40,13 @@ public class Register extends javax.swing.JFrame {
      * Creates new form Register
      */
     public Register() {
+         createUserTable userCreate = new createUserTable();
+                  userCreate.create();
+         createTeacherTable teacherCreate = new createTeacherTable();
+                  teacherCreate.create();
+         createAdminTable adminCreate = new createAdminTable();
+                  adminCreate.create();
+                           
         initComponents();
            
     }
@@ -329,12 +336,13 @@ public class Register extends javax.swing.JFrame {
             pst.setString(7, "null");
 
            if(errors == false){
-        close();
-        LoginPage lPage = new LoginPage();
-        lPage.setVisible(true);
+        
             pst.execute();
 
             JOptionPane.showMessageDialog(null, "Thank you for registering. ");
+            close();
+        LoginPage lPage = new LoginPage();
+        lPage.setVisible(true);
 
             }
     }
