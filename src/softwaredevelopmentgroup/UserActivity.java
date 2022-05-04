@@ -4,6 +4,9 @@
  */
 package softwaredevelopmentgroup;
 
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+
 /**
  *
  * @author aamin
@@ -15,6 +18,11 @@ public class UserActivity extends javax.swing.JFrame {
      */
     public UserActivity() {
         initComponents();
+    }
+    
+        public void close(){
+        WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
 
     /**
@@ -68,7 +76,7 @@ public class UserActivity extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Return to Menu");
+        jButton1.setText("Admin Panel");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -184,6 +192,9 @@ public class UserActivity extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        close();
+        AdminPanel adminP = new AdminPanel();
+        adminP.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
