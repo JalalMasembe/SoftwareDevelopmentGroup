@@ -17,13 +17,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author marco
- */
+
 public class readCSV {
                 public static void main(String[] args) {
             // TODO code application logic here
+                csvReader();
+
+            
+        }
+                static void csvReader(){
             Connection con = connectDB.getConnection();
             Statement stmt = null;
             
@@ -53,6 +55,9 @@ public class readCSV {
                     String side = splitSt[5];
                     String order_id = splitSt[6];
                     String special_words = splitSt[7];
+                   
+                    
+                    
                     String sqlString = "INSERT INTO ConvTable (language, level, context, subcontext, dialogue_txt, side, order_id, special_words) VALUES \n" + "('"+language+"','"+level+"','"+context+"','"+subcontext+"','"+dialogue_txt+"','"+side+"','"+order_id+"','"+special_words+"')";
                     con.setAutoCommit(false);
                     stmt = con.createStatement();
@@ -68,5 +73,5 @@ public class readCSV {
                 JOptionPane.showMessageDialog(null, e); 
                 }
 
-         }
+            }
 }
