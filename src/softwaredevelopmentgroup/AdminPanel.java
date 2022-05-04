@@ -6,6 +6,7 @@ package softwaredevelopmentgroup;
 
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -16,6 +17,10 @@ public class AdminPanel extends javax.swing.JFrame {
     /**
      * Creates new form AdminPanel
      */
+    
+    private java.sql.Timestamp loginDate;
+    private java.sql.Timestamp logoutDate;
+    
     public AdminPanel() {
         initComponents();
     }
@@ -227,6 +232,12 @@ public class AdminPanel extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        logoutDate = new java.sql.Timestamp(new java.util.Date().getTime());
+        System.out.println("logout time: " + logoutDate);
+                 
+        String timeOfLogout = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(logoutDate);
+        System.out.println("logout time: " + timeOfLogout);
+        
         close();
         LoginPage lPage = new LoginPage();
         lPage.setVisible(true);
