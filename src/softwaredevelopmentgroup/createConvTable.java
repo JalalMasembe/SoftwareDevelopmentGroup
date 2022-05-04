@@ -14,7 +14,10 @@ import java.sql.Statement;
 public class createConvTable {
     
    public static void main(String[] args) {
-   Connection con = connectDB.getConnection();
+       create();
+    }   
+   static void create(){
+          Connection con = connectDB.getConnection();
         Statement stmt = null;
         String createString;
         createString = "CREATE TABLE if not exists ConvTable (\n"
@@ -50,5 +53,5 @@ public class createConvTable {
                 }
             }
         }
-    }    
+   }
 }
