@@ -20,8 +20,16 @@ public class SelectTopic extends javax.swing.JFrame {
     /**
      * Creates new form SelectTopic
      */
+            String topicChosen ="";
+            String conversationChosen= "";
+            String roleChosen = "";
+    
+    
     public SelectTopic() {
         initComponents();
+        
+        
+        
     }
     
         public void close(){
@@ -196,9 +204,9 @@ public class SelectTopic extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-     String topicChosen = jComboBox1.getSelectedItem().toString();
-     String conversationChosen = jComboBox2.getSelectedItem().toString();
-     String roleChosen = jComboBox3.getSelectedItem().toString();
+     topicChosen = jComboBox1.getSelectedItem().toString();
+     conversationChosen = jComboBox2.getSelectedItem().toString();
+     roleChosen = jComboBox3.getSelectedItem().toString();
 
       
       try{
