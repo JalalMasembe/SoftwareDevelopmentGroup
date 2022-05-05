@@ -23,9 +23,11 @@ public class LoginPage extends javax.swing.JFrame {
     /**
      * Creates new form LoginPage
      */
+    //variables which collect the time that user has logged in and logged out
     private java.sql.Timestamp loginDate;
     private java.sql.Timestamp logoutDate;
     
+    //initialised connection, preparedstatement and resultset as null for the login to work
     Connection con = null;
     PreparedStatement pst = null;
       ResultSet rs = null;
@@ -34,7 +36,7 @@ public class LoginPage extends javax.swing.JFrame {
         initComponents();
         con = connectDB.getConnection();
     }
-    
+    //close method to be able to close jframe when you click on "logout" button
     public void close(){
     WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
     Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
@@ -176,11 +178,13 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        //String username = jTextField1.getText();
-        //String password = jTextField2.getText();
+        // username variable initialised as empty string
         
         String username = "";
         
+        //if option selected is student when you click "login" button
+        //then it will go through userTable and get text from email and password and check if theres the same results in the userTable
+        //if not then login is not successful
         if(jComboBox1.getSelectedItem().equals("Student")){
         
         String sql = "SELECT * from user WHERE userEmail LIKE ? AND userPassword  LIKE ?; ";
@@ -193,12 +197,15 @@ public class LoginPage extends javax.swing.JFrame {
              if(rs.next()){
                  JOptionPane.showMessageDialog(null, "Login Successful!");
                  username = jTextField1.getText();
+                 //gets the login timestamp when you click "login" button
                  loginDate = new java.sql.Timestamp(new java.util.Date().getTime());
                  System.out.println("login time: " + loginDate);
                  
+                 //prints the login timestamp on the output
                  String timeOfLogin = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(loginDate);
                  System.out.println("login time: " + timeOfLogin);
-                 
+        
+        //closes the login page and goes to the mainpage         
         close();
         MainPage mPage = new MainPage();
         mPage.setVisible(true);
@@ -211,6 +218,10 @@ public class LoginPage extends javax.swing.JFrame {
         catch(Exception e){
         }
         }
+        
+        //if option selected is teacher when you click "login" button
+        //then it will go through teacherTable and get text from email and password and check if theres the same results in the teacherTable
+        //if not then login is not successful
         else
         if(jComboBox1.getSelectedItem().equals("Teacher")){
         
@@ -242,6 +253,9 @@ public class LoginPage extends javax.swing.JFrame {
         catch(Exception e){
         }
         }
+        //if option selected is admin when you click "login" button
+        //then it will go through adminTable and get text from email and password and check if theres the same results in the adminTable
+        //if not then login is not successful
         else
         if(jComboBox1.getSelectedItem().equals("Admin")){
         
@@ -260,6 +274,9 @@ public class LoginPage extends javax.swing.JFrame {
                  
                  String timeOfLogin = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(loginDate);
                  System.out.println("login time: " + timeOfLogin);
+                 
+        // if the option selected is admin and login is successful when you click login button
+        // then it will close the login page and go to the admin panel
         close();
         AdminPanel adminP = new AdminPanel ();
         adminP.setVisible(true);
@@ -276,6 +293,7 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        // "register" button which goes from login page to register page
         close();
         Register registerP = new Register();
         registerP.setVisible(true); 
