@@ -32,8 +32,8 @@ public class convPage extends javax.swing.JFrame {
         ResultSet rs = null;
         
                                 //EXAMPLE SET
-        String language = "Spanish";
-        String level = "A1";
+        String language = "Spanish";    //
+        String level = "A1";        //
         String context = "Ordering food and drink";
         String subcontext = "Takeaway";
         String dialogue_txt = "";
