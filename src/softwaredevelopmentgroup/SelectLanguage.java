@@ -19,13 +19,14 @@ import javax.swing.JOptionPane;
 public class SelectLanguage extends javax.swing.JFrame {
     
     
-      
-
+      String languageLevel;
+      String selectedLanguage;
     /**
      * Creates new form SelectLanguage
      */
     public SelectLanguage() {
         initComponents();
+        
     }
     
     public void close(){
@@ -188,9 +189,9 @@ public class SelectLanguage extends javax.swing.JFrame {
         // TODO add your handling code here:
         
      //String selectedTutor = jComboBox2.getSelectedItem().toString();
-     String selectedLanguage = jComboBox1.getSelectedItem().toString();
-     
-    String languageLevel = "";// initially was an empty string
+     selectedLanguage = jComboBox1.getSelectedItem().toString();
+     selectedLanguage = "hello";
+     languageLevel = "";// initially was an empty string
      
      if(jRadioButton1.isSelected()){
       languageLevel = jRadioButton1.getText();
@@ -208,8 +209,9 @@ public class SelectLanguage extends javax.swing.JFrame {
      if(jRadioButton4.isSelected()){
        languageLevel = jRadioButton4.getText();
      }
-     
-     
+          
+
+
       
       try{
              Connection con = connectDB.getConnection();
@@ -251,8 +253,9 @@ public class SelectLanguage extends javax.swing.JFrame {
         SelectTopic SelectT = new SelectTopic();
         SelectT.setVisible(true);  
         
-        
+       
   
+        
         
         
     }//GEN-LAST:event_languageSelectionActionPerformed
@@ -278,23 +281,31 @@ public class SelectLanguage extends javax.swing.JFrame {
         close();
         MainPage mPage = new MainPage();
         mPage.setVisible(true);
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
     
     
     
+
+    //getter
+    public String getLang(){
+        return selectedLanguage;
+    }
+    //setter
+    public void setLang(String Lan){
+        this.selectedLanguage = Lan;
+    }
     
     
-    
-    
-    
-    
-    
-    
+ 
+
     
     
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -333,8 +344,12 @@ public class SelectLanguage extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new SelectLanguage().setVisible(true);
+        
             }
-        });
+        }
+        
+        );
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -350,4 +365,5 @@ public class SelectLanguage extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JButton languageSelection;
     // End of variables declaration//GEN-END:variables
+
 }
