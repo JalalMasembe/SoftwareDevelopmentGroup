@@ -235,6 +235,7 @@ public class convPage extends javax.swing.JFrame {
           sw_checker();
           jButton2.setVisible(false);
           jButton1.setVisible(true);
+          jButton3.setVisible(false);
           jLabel1.setVisible(true);
           jLabel2.setVisible(true);
           
