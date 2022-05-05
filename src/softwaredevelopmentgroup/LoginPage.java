@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +23,11 @@ public class LoginPage extends javax.swing.JFrame {
     /**
      * Creates new form LoginPage
      */
+    //variables which collect the time that user has logged in and logged out
+    private java.sql.Timestamp loginDate;
+    private java.sql.Timestamp logoutDate;
     
+    //initialised connection, preparedstatement and resultset as null for the login to work
     Connection con = null;
     PreparedStatement pst = null;
       ResultSet rs = null;
@@ -37,7 +42,7 @@ public class LoginPage extends javax.swing.JFrame {
          createAdminTable adminCreate = new createAdminTable();
                   adminCreate.create();
     }
-    
+    //close method to be able to close jframe when you click on "logout" button
     public void close(){
     WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
     Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
@@ -55,11 +60,11 @@ public class LoginPage extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -75,12 +80,6 @@ public class LoginPage extends javax.swing.JFrame {
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
-            }
-        });
-
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
             }
         });
 
@@ -103,6 +102,13 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
 
+        jPasswordField1.setPreferredSize(new java.awt.Dimension(64, 22));
+        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -110,15 +116,15 @@ public class LoginPage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
-                            .addComponent(jTextField2)))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -126,13 +132,13 @@ public class LoginPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(57, 57, 57)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
@@ -145,7 +151,7 @@ public class LoginPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(138, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -166,7 +172,7 @@ public class LoginPage extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -178,20 +184,34 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-        //String username = jTextField1.getText();
-        //String password = jTextField2.getText();
+        // username variable initialised as empty string
         
+        String username = "";
+        
+        //if option selected is student when you click "login" button
+        //then it will go through userTable and get text from email and password and check if theres the same results in the userTable
+        //if not then login is not successful
         if(jComboBox1.getSelectedItem().equals("Student")){
         
         String sql = "SELECT * from user WHERE userEmail LIKE ? AND userPassword  LIKE ?; ";
         try{
              pst = con.prepareStatement(sql);
              pst.setString(1, jTextField1.getText());
-             pst.setString(2, jTextField2.getText());
+             pst.setString(2, jPasswordField1.getText());
              rs = pst.executeQuery();
              
              if(rs.next()){
                  JOptionPane.showMessageDialog(null, "Login Successful!");
+                 username = jTextField1.getText();
+                 //gets the login timestamp when you click "login" button
+                 loginDate = new java.sql.Timestamp(new java.util.Date().getTime());
+                 System.out.println("login time: " + loginDate);
+                 
+                 //prints the login timestamp on the output
+                 String timeOfLogin = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(loginDate);
+                 System.out.println("login time: " + timeOfLogin);
+        
+        //closes the login page and goes to the mainpage         
         close();
         MainPage mPage = new MainPage();
         mPage.setVisible(true);
@@ -204,6 +224,10 @@ public class LoginPage extends javax.swing.JFrame {
         catch(Exception e){
         }
         }
+        
+        //if option selected is teacher when you click "login" button
+        //then it will go through teacherTable and get text from email and password and check if theres the same results in the teacherTable
+        //if not then login is not successful
         else
         if(jComboBox1.getSelectedItem().equals("Teacher")){
         
@@ -211,11 +235,18 @@ public class LoginPage extends javax.swing.JFrame {
         try{
              pst = con.prepareStatement(sql);
              pst.setString(1, jTextField1.getText());
-             pst.setString(2, jTextField2.getText());
+             pst.setString(2, jPasswordField1.getText());
              rs = pst.executeQuery();
              
              if(rs.next()){
                  JOptionPane.showMessageDialog(null, "Login Successful!");
+                 
+                 loginDate = new java.sql.Timestamp(new java.util.Date().getTime());
+                 System.out.println("login time: " + loginDate);
+                 
+                 String timeOfLogin = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(loginDate);
+                 System.out.println("login time: " + timeOfLogin);
+                          
         close();
         MainPage mPage = new MainPage();
         mPage.setVisible(true);
@@ -228,6 +259,9 @@ public class LoginPage extends javax.swing.JFrame {
         catch(Exception e){
         }
         }
+        //if option selected is admin when you click "login" button
+        //then it will go through adminTable and get text from email and password and check if theres the same results in the adminTable
+        //if not then login is not successful
         else
         if(jComboBox1.getSelectedItem().equals("Admin")){
         
@@ -235,11 +269,20 @@ public class LoginPage extends javax.swing.JFrame {
         try{
              pst = con.prepareStatement(sql);
              pst.setString(1, jTextField1.getText());
-             pst.setString(2, jTextField2.getText());
+             pst.setString(2, jPasswordField1.getText());
              rs = pst.executeQuery();
              
              if(rs.next()){
                  JOptionPane.showMessageDialog(null, "Login Successful!");
+                 
+                 loginDate = new java.sql.Timestamp(new java.util.Date().getTime());
+                 System.out.println("login time: " + loginDate);
+                 
+                 String timeOfLogin = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").format(loginDate);
+                 System.out.println("login time: " + timeOfLogin);
+                 
+        // if the option selected is admin and login is successful when you click login button
+        // then it will close the login page and go to the admin panel
         close();
         AdminPanel adminP = new AdminPanel ();
         adminP.setVisible(true);
@@ -252,32 +295,11 @@ public class LoginPage extends javax.swing.JFrame {
         catch(Exception e){
         }
         }
-        /*
-             try{
-             Connection con = connectDB.getConnection();
-             Statement stmt = null; 
-             System.out.println("");
-             
-             String sql = "jdbc:sqlite:LanguageApp.db";
-             PreparedStatement pst = con.prepareStatement(sql);
-             System.out.println("");
-             pst.setString(1,userEmail.getText());
-             System.out.println("");
-             
-             System.out.println("" + userEmail.getText());
-             ResultSet rs = pst.executeQuery();
-             System.out.println("" + getString(i));
-             }
-             
-             if 
-             
-             catch {
-                 
-             }*/
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        // "register" button which goes from login page to register page
         close();
         Register registerP = new Register();
         registerP.setVisible(true); 
@@ -287,13 +309,13 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -338,7 +360,7 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

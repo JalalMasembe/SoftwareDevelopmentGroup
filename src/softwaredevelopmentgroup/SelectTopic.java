@@ -20,6 +20,8 @@ public class SelectTopic extends javax.swing.JFrame {
     /**
      * Creates new form SelectTopic
      */
+    
+    //initialising topicChosen,conversationChosen and roleChosen variables
             String topicChosen ="";
             String conversationChosen= "";
             String roleChosen = "";
@@ -31,7 +33,7 @@ public class SelectTopic extends javax.swing.JFrame {
         
         
     }
-    
+    //close method to be able to close jframe when you click on "go back"
         public void close(){
         WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
         Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
@@ -161,6 +163,7 @@ public class SelectTopic extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
        //level 1
+       //if jcombobox selected value equals the selected option then display certain options for conversation
         
         if(jComboBox1.getSelectedItem().equals("Ordering food and drink"))
         {
@@ -251,6 +254,8 @@ public class SelectTopic extends javax.swing.JFrame {
         }
         
         //level 2
+        //if jcombobox selected value equals the selected option then display certain options for conversation
+        //continuation of if statements
         else
         if(jComboBox1.getSelectedItem().equals("Introductions**"))
         {
@@ -350,6 +355,8 @@ public class SelectTopic extends javax.swing.JFrame {
         }
         
         //level 3
+        //if jcombobox selected value equals the selected option then display certain options for conversation
+        //continuation of if statements
         else
         if(jComboBox1.getSelectedItem().equals("University life***"))
         {
@@ -417,7 +424,8 @@ public class SelectTopic extends javax.swing.JFrame {
         }
         
         //level 4
-        
+        //if jcombobox selected value equals the selected option then display certain options for conversation
+        //continuation of if statements
         else
         if(jComboBox1.getSelectedItem().equals("Going shopping and asking for prices****"))
         {
@@ -450,12 +458,13 @@ public class SelectTopic extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        //if "start script" button is clicked then get whatever options were chosen
         
       topicChosen = jComboBox1.getSelectedItem().toString();
       conversationChosen = jComboBox2.getSelectedItem().toString();
       roleChosen = jComboBox3.getSelectedItem().toString();
 
-      
+      //these options that were chosen will then get updated into the userTable
       try{
              Connection con = connectDB.getConnection();
              Statement stmt = null;  
@@ -482,6 +491,7 @@ public class SelectTopic extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        //closes selectTopic JFrame and returns to selectLanguage JFrame
         close();
         SelectLanguage selectL = new SelectLanguage();
         selectL.setVisible(true);
