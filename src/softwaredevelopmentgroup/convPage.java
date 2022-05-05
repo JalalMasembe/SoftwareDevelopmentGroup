@@ -37,7 +37,7 @@ public class convPage extends javax.swing.JFrame {
         String context = "Ordering food and drink";
         String subcontext = "Takeaway";
         String dialogue_txt = "";
-        String side = "A"; // try interchange A and B
+        String side = "B"; // try interchange A and B
         int order_id = 0;
         String special_words = "";
         int MaxOrder = 0;
@@ -209,7 +209,8 @@ public class convPage extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
           // BUTTON LOAD DATABASE
-          
+          createConvTable convCreate = new createConvTable();
+                  convCreate.create();
          readCSV read_csv = new readCSV();
                   read_csv.csvReader();
        

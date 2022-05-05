@@ -30,6 +30,12 @@ public class LoginPage extends javax.swing.JFrame {
     public LoginPage() {
         initComponents();
         con = connectDB.getConnection();
+        createUserTable userCreate = new createUserTable();
+                  userCreate.create();
+         createTeacherTable teacherCreate = new createTeacherTable();
+                  teacherCreate.create();
+         createAdminTable adminCreate = new createAdminTable();
+                  adminCreate.create();
     }
     
     public void close(){
