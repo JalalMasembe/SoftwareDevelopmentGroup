@@ -233,7 +233,7 @@ public class convPage extends javax.swing.JFrame {
           maxOrder_id();
           convFinder();
           sw_checker();
-          jButton3.setVisible(false);
+          jButton2.setVisible(false);
           jButton1.setVisible(true);
           jLabel1.setVisible(true);
           jLabel2.setVisible(true);
